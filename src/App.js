@@ -13,6 +13,18 @@ function App() {
       <BrowserRouter>
         <Header />
         <h1>Prodavnica ski opreme</h1>
+        <Routes>
+          <Route path="/login" element={<Login />}></Route>
+        </Routes>
+        <Routes>
+          <Route path="/register" element={<Register />}></Route>
+        </Routes>
+        <Routes>
+          <Route path="/add" element={<AddProduct />}></Route>
+        </Routes>
+        <Routes>
+          <Route path="/update" element={<UpdateProduct />}></Route>
+        </Routes>
       </BrowserRouter>
     </div>
   );
