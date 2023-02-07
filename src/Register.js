@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function Register() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   async function signUp() {
     let item = { name, email, password };
@@ -19,8 +19,8 @@ function Register() {
       },
     });
     result = await result.json();
-    localStorage.setItem("user-infor", JSON.stringify(result));
-    history.push("/add");
+    localStorage.setItem("user-info", JSON.stringify(result));
+    navigate("/add");
   }
   return (
     <div className="col-sm-6 offset-sm-3">
@@ -49,7 +49,7 @@ function Register() {
       />
       <br />
       <button onClick={signUp} className="btn btn-primary">
-        Prijavi se
+        Registruj se
       </button>
     </div>
   );
