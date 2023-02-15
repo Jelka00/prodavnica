@@ -16,13 +16,18 @@ function Login() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "äpplication/json",
+        Accept: "application/json",
       },
       body: JSON.stringify(item),
     });
     result = await result.json();
-    localStorage.setItem("user-info", JSON.stringify(result));
-    navigate("/add");
+    if (result.error == "Email or password is not matched") {
+      navigate("/login");
+      alert("Pogresan e-mail ili lozinka!");
+    } else {
+      localStorage.setItem("user-info", JSON.stringify(result));
+      navigate("/add");
+    }
   }
   return (
     <div>

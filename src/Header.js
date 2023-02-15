@@ -16,6 +16,7 @@ function Header() {
           <Nav className="me-auto navbar_wrapper">
             {localStorage.getItem("user-info") ? (
               <>
+                <Link to="/">Lista proizvoda</Link>
                 <Link to="/add">Dodaj proizvod</Link>
                 <Link to="/update">Azuriraj proizvod</Link>
               </>
