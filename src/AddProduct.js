@@ -5,9 +5,11 @@ function AddProduct() {
   const [file, setFile] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+
   async function addProduct() {
     console.warn(name, file, price, description);
     const formData = new FormData();
+    //Append- dodaj na kraju
     formData.append("file", file);
     formData.append("price", price);
     formData.append("name", name);

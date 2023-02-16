@@ -21,4 +21,35 @@ class ProductController extends Controller
     {
         return ProductModel::all();
     }
+
+    function delete($id)
+    {
+        $result = ProductModel::where('id', $id)->delete();
+        if ($result) {
+            return ["result" => "Proizvod je izbrisan!"];
+        } else {
+            return ["result" => "Nije moguce izbrisati proizvod!"];
+        }
+    }
+
+    function getProduct($id)
+    {
+        return ProductModel::find($id);
+    }
+    function updateProduct(Request $req, $id)
+    {
+        // Get the product to update from the database
+        $product = ProductModel::find($id);
+
+        // Update the product information
+        $product->name = $req->input('name');
+        $product->price = $req->input('price');
+        $product->description = $req->input('description');
+        $product->file_path = $req->file('file')->store("products");
+        // Save the updated product to the database
+        $product->save();
+
+        // Return a response indicating the product was successfully updated
+        return response()->json(['message' => 'Proizvod uspesno azuriran!']);
+    }
 }
