@@ -45,11 +45,16 @@ class ProductController extends Controller
         $product->name = $req->input('name');
         $product->price = $req->input('price');
         $product->description = $req->input('description');
-        $product->file_path = $req->file('file')->store("products");
+        //$product->file_path = $req->file('file')->store('products');
         // Save the updated product to the database
         $product->save();
 
         // Return a response indicating the product was successfully updated
         return response()->json(['message' => 'Proizvod uspesno azuriran!']);
+    }
+
+    function search($key)
+    {
+        return ProductModel::where('name', 'Like', "%$key%")->get();
     }
 }

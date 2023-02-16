@@ -29,15 +29,17 @@ function ProductList() {
     <div>
       <h1>Lista proizvoda</h1>
       <div className="col-sm-8 offset-sm-2">
-        <Table>
-          <tr>
-            <td>ID</td>
-            <td>Naziv</td>
-            <td>Cena</td>
-            <td>Opis</td>
-            <td>Slika</td>
-            <td>Izmene</td>
-          </tr>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Naziv</th>
+              <th scope="col">Cena</th>
+              <th scope="col">Opis</th>
+              <th scope="col">Slika</th>
+              <th scope="col">Izmene</th>
+            </tr>
+          </thead>
           {data.map((item) => (
             <tr>
               <td>{item.id}</td>
@@ -68,7 +70,7 @@ function ProductList() {
               </td>
             </tr>
           ))}
-        </Table>
+        </table>
       </div>
     </div>
   );

@@ -25,14 +25,12 @@ function UpdateProduct() {
       description: description,
       file_path: file_path,
     };
-    alert(updateData.name);
-    alert(price);
     let result = await fetch("http://localhost:8000/api/update/" + id.id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: updateData,
+      body: JSON.stringify(updateData),
     });
     if (!result) {
       throw new Error("Neuspesno azuriranje!");

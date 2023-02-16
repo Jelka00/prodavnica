@@ -8,6 +8,7 @@ import Register from "./Register";
 import AddProduct from "./AddProduct";
 import UpdateProduct from "./UpdateProduct";
 import ProductList from "./ProductList";
+import SearchProduct from "./Search";
 function App() {
   return (
     <div className="App">
@@ -28,6 +29,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/update/:id" element={<UpdateProduct />}></Route>
+        </Routes>
+        <Routes>
+          <Route path="/search" element={<SearchProduct />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

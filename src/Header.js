@@ -19,6 +19,7 @@ function Header() {
                 <Link to="/">Lista proizvoda</Link>
                 <Link to="/add">Dodaj proizvod</Link>
                 <Link to="/update">Azuriraj proizvod</Link>
+                <Link to="/search">Pretrazi proizvod</Link>
               </>
             ) : (
               <>
