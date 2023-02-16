@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('sky_track', function (Blueprint $table) {
-            $table->renameColumn('track_length', 'length');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('user_status');
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('sky_track', function (Blueprint $table) {
-            //
+        Schema::table('users', function (Blueprint $table) {
+            $table->removeColumn('user_status');
         });
     }
 };
