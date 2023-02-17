@@ -7,7 +7,8 @@ function Register() {
   const navigate = useNavigate();
 
   async function signUp() {
-    let item = { name, email, password };
+    var user_status = "";
+    let item = { name, email, password, user_status };
     console.warn(item);
 
     let result = await fetch("http://localhost:8000/api/register", {
@@ -20,7 +21,7 @@ function Register() {
     });
     result = await result.json();
     localStorage.setItem("user-info", JSON.stringify(result));
-    navigate("/add");
+    navigate("/");
   }
   return (
     <div className="col-sm-6 offset-sm-3">

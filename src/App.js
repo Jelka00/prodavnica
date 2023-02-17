@@ -9,6 +9,8 @@ import AddProduct from "./AddProduct";
 import UpdateProduct from "./UpdateProduct";
 import ProductList from "./ProductList";
 import SearchProduct from "./Search";
+import ProductListAdmin from "./ProductListAdmin";
+import Basket from "./Basket";
 function App() {
   return (
     <div className="App">
@@ -22,7 +24,13 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
         </Routes>
         <Routes>
+          <Route path="/basket" element={<Basket />}></Route>
+        </Routes>
+        <Routes>
           <Route path="/" element={<ProductList />}></Route>
+        </Routes>
+        <Routes>
+          <Route path="/adminList" element={<ProductListAdmin />}></Route>
         </Routes>
         <Routes>
           <Route path="/add" element={<AddProduct />}></Route>

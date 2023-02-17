@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MDBBtn } from "mdb-react-ui-kit";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-export let products;
-function ProductList() {
+function ProductListAdmin() {
   const [data, setData] = useState([]);
   useEffect(() => {
     /*const loadData = async () => {
@@ -14,11 +13,12 @@ function ProductList() {
     loadData();*/
     getData();
   }, []);
-  const products = [];
-  function sendToBasket(id) {
-    products.push(id);
-    //console.warn(products);
-    //console.warn("http://localhost:8000/api/listBasket/" + products);
+  async function deleteOperation(id) {
+    let result = await fetch("http://localhost:8000/api/delete/" + id, {
+      method: "DELETE",
+    });
+    result = await result.json();
+    getData();
   }
   async function getData() {
     let result = await fetch("http://localhost:8000/api/list");
@@ -32,15 +32,17 @@ function ProductList() {
         <table class="table">
           <thead class="thead-dark">
             <tr>
+              <th scope="col">ID</th>
               <th scope="col">Naziv</th>
               <th scope="col">Cena</th>
               <th scope="col">Opis</th>
               <th scope="col">Slika</th>
-              <th scope="col">Opcije</th>
+              <th scope="col">Izmene</th>
             </tr>
           </thead>
           {data.map((item) => (
             <tr>
+              <td>{item.id}</td>
               <td>{item.name}</td>
               <td>{item.price}</td>
               <td>{item.description}</td>
@@ -52,12 +54,19 @@ function ProductList() {
               </td>
               <td>
                 <button
-                  onClick={() => sendToBasket(item.id)}
+                  onClick={() => deleteOperation(item.id)}
                   type="button"
-                  class="btn btn-info"
+                  class="btn btn-warning"
                 >
-                  Dodaj u korpu
+                  Obrisi
                 </button>
+              </td>
+              <td>
+                <Link to={"update/" + item.id}>
+                  <button type="button" class="btn btn-success">
+                    Azuriraj
+                  </button>
+                </Link>
               </td>
             </tr>
           ))}
@@ -66,4 +75,5 @@ function ProductList() {
     </div>
   );
 }
-export default ProductList;
+
+export default ProductListAdmin;

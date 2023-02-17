@@ -26,7 +26,7 @@ function Login() {
       alert("Pogresan e-mail ili lozinka!");
     } else {
       localStorage.setItem("user-info", JSON.stringify(result));
-      navigate("/add");
+      navigate("/");
     }
   }
   return (

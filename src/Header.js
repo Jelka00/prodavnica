@@ -18,7 +18,7 @@ function Header() {
               <>
                 {JSON.parse(localStorage.getItem("user-info")).user_status ? (
                   <>
-                    <Link to="/">Lista proizvoda</Link>
+                    <Link to="/adminList">Lista proizvoda</Link>
                     <Link to="/add">Dodaj proizvod</Link>
                     <Link to="/update">Azuriraj proizvod</Link>
                     <Link to="/search">Pretrazi proizvod</Link>
@@ -27,6 +27,7 @@ function Header() {
                   <>
                     <Link to="/">Lista proizvoda</Link>
                     <Link to="/search">Pretrazi proizvod</Link>
+                    <Link to="/basket">Korpa</Link>
                   </>
                 )}
               </>

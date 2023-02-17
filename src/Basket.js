@@ -2,26 +2,17 @@ import React, { useState, useEffect } from "react";
 import { MDBBtn } from "mdb-react-ui-kit";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-export let products;
-function ProductList() {
+import products from "./ProductList";
+function Basket() {
+  alert(products);
   const [data, setData] = useState([]);
   useEffect(() => {
-    /*const loadData = async () => {
-      let result = await fetch("http://localhost:8000/api/list");
-      result = await result.json();
-      setData(result);
-    };
-    loadData();*/
     getData();
   }, []);
-  const products = [];
-  function sendToBasket(id) {
-    products.push(id);
-    //console.warn(products);
-    //console.warn("http://localhost:8000/api/listBasket/" + products);
-  }
+
   async function getData() {
-    let result = await fetch("http://localhost:8000/api/list");
+    console.warn(products);
+    let result = await fetch("http://localhost:8000/api/listBasket" + products);
     result = await result.json();
     setData(result);
   }
@@ -51,11 +42,7 @@ function ProductList() {
                 />
               </td>
               <td>
-                <button
-                  onClick={() => sendToBasket(item.id)}
-                  type="button"
-                  class="btn btn-info"
-                >
+                <button type="button" class="btn btn-info">
                   Dodaj u korpu
                 </button>
               </td>
@@ -66,4 +53,4 @@ function ProductList() {
     </div>
   );
 }
-export default ProductList;
+export default Basket;
