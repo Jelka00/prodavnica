@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 import { MDBBtn } from "mdb-react-ui-kit";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function Basket() {
   const [data, setData] = useState([]);
   const [userData, setUserData] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     getData();
     //getUser();
   }, []);
 
-  async function getUser() {
+  /*async function getUser() {
     const id = JSON.parse(localStorage.getItem("user-info")).id;
 
     let user = await fetch("http://localhost:8000/api/user/" + id);
@@ -20,6 +22,37 @@ function Basket() {
     //setUserData(result);
     //alert(JSON.stringify(data.basket_products));
     return user;
+  }*/
+
+  async function removeFromBasket(idProd) {
+    const id = JSON.parse(localStorage.getItem("user-info")).id;
+
+    let user = await fetch("http://localhost:8000/api/user/" + id);
+    user = await user.json();
+
+    let str = JSON.stringify(user.basket_products);
+    str = str.replace(/^"(.*)"$/, "$1");
+
+    str = str + "," + window.products;
+
+    let regex = new RegExp(idProd + ",?", "g");
+    str = str.replace(regex, "");
+
+    const updateData = {
+      basket_products: str,
+    };
+    let result = await fetch("http://localhost:8000/api/updateUser/" + id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updateData),
+    });
+    if (!result) {
+      throw new Error("Neuspesno brisanje!");
+    }
+    alert("Stavka uspesno izbrisana");
+    window.location.reload(true);
   }
 
   async function getData() {
@@ -95,7 +128,11 @@ function Basket() {
                 />
               </td>
               <td>
-                <button type="button" class="btn btn-warning">
+                <button
+                  onClick={() => removeFromBasket(item.id)}
+                  type="button"
+                  class="btn btn-warning"
+                >
                   Izbaci iz korpe
                 </button>
               </td>
