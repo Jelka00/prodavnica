@@ -27,10 +27,10 @@ function App() {
           <Route path="/basket" element={<Basket />}></Route>
         </Routes>
         <Routes>
-          <Route path="/" element={<ProductList />}></Route>
+          <Route path="/list" element={<ProductList />}></Route>
         </Routes>
         <Routes>
-          <Route path="/adminList" element={<ProductListAdmin />}></Route>
+          <Route path="/" element={<ProductListAdmin />}></Route>
         </Routes>
         <Routes>
           <Route path="/add" element={<AddProduct />}></Route>

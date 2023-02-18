@@ -18,3 +18,5 @@ Route::delete('delete/{id}', [ProductController::class, 'delete']);
 Route::get('product/{id}', [ProductController::class, 'getProduct']);
 Route::put('update/{id}', [ProductController::class, 'updateProduct']);
 Route::get('search/{id}', [ProductController::class, 'search']);
+Route::put('updateUser/{id}', [UserController::class, 'addToBasket']);
+Route::get('user/{id}', [UserController::class, 'getUser']);

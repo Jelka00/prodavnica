@@ -2,20 +2,73 @@ import React, { useState, useEffect } from "react";
 import { MDBBtn } from "mdb-react-ui-kit";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import products from "./ProductList";
 function Basket() {
-  alert(products);
   const [data, setData] = useState([]);
+  const [userData, setUserData] = useState([]);
   useEffect(() => {
     getData();
+    //getUser();
   }, []);
 
+  async function getUser() {
+    const id = JSON.parse(localStorage.getItem("user-info")).id;
+
+    let user = await fetch("http://localhost:8000/api/user/" + id);
+
+    user = await user.json();
+
+    //setUserData(result);
+    //alert(JSON.stringify(data.basket_products));
+    return user;
+  }
+
   async function getData() {
-    console.warn(products);
-    let result = await fetch("http://localhost:8000/api/listBasket" + products);
+    const id = JSON.parse(localStorage.getItem("user-info")).id;
+
+    let user = await fetch("http://localhost:8000/api/user/" + id);
+
+    user = await user.json();
+
+    let str = JSON.stringify(user.basket_products);
+    str = str.replace(/^"(.*)"$/, "$1");
+
+    let result = await fetch(
+      "http://localhost:8000/api/listBasket/" + str + "," + window.products
+    );
     result = await result.json();
     setData(result);
   }
+
+  async function updateBasket() {
+    const id = JSON.parse(localStorage.getItem("user-info")).id;
+
+    let user = await fetch("http://localhost:8000/api/user/" + id);
+
+    user = await user.json();
+
+    let str = JSON.stringify(user.basket_products);
+    str = str.replace(/^"(.*)"$/, "$1");
+
+    var products = str + "," + window.products;
+
+    const basket_products = products;
+
+    const updateData = {
+      basket_products: basket_products,
+    };
+    let result = await fetch("http://localhost:8000/api/updateUser/" + id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updateData),
+    });
+    if (!result) {
+      throw new Error("Neuspesno azuriranje!");
+    }
+    alert("Korpa uspesno azurirana");
+  }
+
   return (
     <div>
       <h1>Lista proizvoda</h1>
@@ -42,14 +95,17 @@ function Basket() {
                 />
               </td>
               <td>
-                <button type="button" class="btn btn-info">
-                  Dodaj u korpu
+                <button type="button" class="btn btn-warning">
+                  Izbaci iz korpe
                 </button>
               </td>
             </tr>
           ))}
         </table>
       </div>
+      <button onClick={updateBasket} type="button" class="btn btn-success">
+        Azuriraj korpu
+      </button>
     </div>
   );
 }

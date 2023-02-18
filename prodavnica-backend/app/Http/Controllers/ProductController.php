@@ -21,9 +21,10 @@ class ProductController extends Controller
     {
         return ProductModel::all();
     }
-    function listBasket(array $ids)
+    function listBasket($ids)
     {
-        return $this->whereIn('id', $ids)->get();
+        $idArray = explode(',', $ids);
+        return  ProductModel::whereIn('id', $idArray)->get();
     }
     function delete($id)
     {

@@ -26,4 +26,16 @@ class UserController extends Controller
         }
         return $user;
     }
+    function addToBasket(Request $req, $id)
+    {
+        $user = User::find($id);
+        $user->basket_products = $req->input('basket_products');
+
+        $user->save();
+        return $user;
+    }
+    function getUser($id)
+    {
+        return User::find($id);
+    }
 }

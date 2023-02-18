@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function AddProduct() {
   const [name, setName] = useState("");
   const [file, setFile] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-
+  const navigate = useNavigate();
   async function addProduct() {
     console.warn(name, file, price, description);
     const formData = new FormData();
@@ -19,7 +20,9 @@ function AddProduct() {
       method: "POST",
       body: formData,
     });
+    console.warn(JSON.stringify(formData));
     alert("Proizvod je sacuvan!");
+    navigate("/");
   }
   return (
     <div>

@@ -7,6 +7,7 @@ function UpdateProduct() {
   useEffect(() => {
     const sendData = async () => {
       let result = await fetch("http://localhost:8000/api/product/" + id.id);
+
       result = await result.json();
       setData(result);
     };

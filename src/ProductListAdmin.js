@@ -5,12 +5,6 @@ import { Link } from "react-router-dom";
 function ProductListAdmin() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    /*const loadData = async () => {
-      let result = await fetch("http://localhost:8000/api/list");
-      result = await result.json();
-      setData(result);
-    };
-    loadData();*/
     getData();
   }, []);
   async function deleteOperation(id) {

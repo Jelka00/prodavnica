@@ -21,12 +21,19 @@ function Login() {
       body: JSON.stringify(item),
     });
     result = await result.json();
+    console.warn(result);
     if (result.error == "Email or password is not matched") {
       navigate("/login");
       alert("Pogresan e-mail ili lozinka!");
     } else {
       localStorage.setItem("user-info", JSON.stringify(result));
-      navigate("/");
+      if (
+        JSON.parse(localStorage.getItem("user-info")).user_status == "admin"
+      ) {
+        navigate("/");
+      } else {
+        navigate("/list");
+      }
     }
   }
   return (

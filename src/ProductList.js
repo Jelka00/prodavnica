@@ -2,29 +2,23 @@ import React, { useState, useEffect } from "react";
 import { MDBBtn } from "mdb-react-ui-kit";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-export let products;
 function ProductList() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    /*const loadData = async () => {
-      let result = await fetch("http://localhost:8000/api/list");
-      result = await result.json();
-      setData(result);
-    };
-    loadData();*/
     getData();
   }, []);
-  const products = [];
+  var products = [];
   function sendToBasket(id) {
     products.push(id);
-    //console.warn(products);
-    //console.warn("http://localhost:8000/api/listBasket/" + products);
+    console.warn(products);
   }
+  window.products = products;
   async function getData() {
     let result = await fetch("http://localhost:8000/api/list");
     result = await result.json();
     setData(result);
   }
+
   return (
     <div>
       <h1>Lista proizvoda</h1>

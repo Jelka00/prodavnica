@@ -6,7 +6,7 @@ function Header() {
   const navigate = useNavigate();
   function logOut() {
     localStorage.clear();
-    navigate("/register");
+    navigate("/login");
   }
   return (
     <div>
@@ -18,14 +18,14 @@ function Header() {
               <>
                 {JSON.parse(localStorage.getItem("user-info")).user_status ? (
                   <>
-                    <Link to="/adminList">Lista proizvoda</Link>
+                    <Link to="/">Lista proizvoda</Link>
                     <Link to="/add">Dodaj proizvod</Link>
                     <Link to="/update">Azuriraj proizvod</Link>
                     <Link to="/search">Pretrazi proizvod</Link>
                   </>
                 ) : (
                   <>
-                    <Link to="/">Lista proizvoda</Link>
+                    <Link to="/list">Lista proizvoda</Link>
                     <Link to="/search">Pretrazi proizvod</Link>
                     <Link to="/basket">Korpa</Link>
                   </>
