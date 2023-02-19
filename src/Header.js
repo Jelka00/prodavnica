@@ -12,7 +12,9 @@ function Header() {
     <div>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Prodavnica ski opreme</Navbar.Brand>
+          <Navbar.Brand href="/home">
+            Prodavnica zimske opreme Kopaonik
+          </Navbar.Brand>
           <Nav className="me-auto navbar_wrapper">
             {localStorage.getItem("user-info") ? (
               <>
@@ -20,8 +22,8 @@ function Header() {
                   <>
                     <Link to="/">Lista proizvoda</Link>
                     <Link to="/add">Dodaj proizvod</Link>
-                    <Link to="/update">Azuriraj proizvod</Link>
                     <Link to="/search">Pretrazi proizvod</Link>
+                    <Link to="/addPost">Dodaj objavu</Link>
                   </>
                 ) : (
                   <>

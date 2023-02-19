@@ -8,6 +8,7 @@ function ProductList() {
     getData();
   }, []);
   var products = [];
+
   function sendToBasket(id) {
     products.push(id);
     console.warn(products);

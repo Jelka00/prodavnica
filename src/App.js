@@ -11,12 +11,17 @@ import ProductList from "./ProductList";
 import SearchProduct from "./Search";
 import ProductListAdmin from "./ProductListAdmin";
 import Basket from "./Basket";
+import Footer from "./components/Footer";
+import News from "./components/News";
+import AddPost from "./AddPost";
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Header />
-        <h1>Prodavnica ski opreme</h1>
+        <h1 class="text-5xl font-extrabold dark:text-black">
+          Prodavnica zimske opreme
+        </h1>
         <Routes>
           <Route path="/login" element={<Login />}></Route>
         </Routes>
@@ -41,6 +46,13 @@ function App() {
         <Routes>
           <Route path="/search" element={<SearchProduct />}></Route>
         </Routes>
+        <Routes>
+          <Route path="/home" element={<News></News>}></Route>
+        </Routes>
+        <Routes>
+          <Route path="/addPost" element={<AddPost></AddPost>}></Route>
+        </Routes>
+        <Footer></Footer>
       </BrowserRouter>
     </div>
   );

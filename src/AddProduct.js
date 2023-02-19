@@ -28,38 +28,43 @@ function AddProduct() {
     <div>
       <div className="col-sm-6-offset-sm-3">
         <br />
+        <br />
         <input
+          id="input"
           type="text"
           className="form-control"
           onChange={(e) => setName(e.target.value)}
           placeholder="naziv"
         />
-        <br />
+        <br /> <br />
         <input
+          id="input"
           type="file"
           className="form-control"
           onChange={(e) => setFile(e.target.files[0])}
           placeholder="fajl"
         />{" "}
-        <br />
+        <br /> <br />
         <input
+          id="input"
           type="text"
           className="form-control"
           onChange={(e) => setPrice(e.target.value)}
           placeholder="cena"
         />
-        <br />
+        <br /> <br />
         <input
+          id="input"
           type="text"
           className="form-control"
           onChange={(e) => setDescription(e.target.value)}
           placeholder="opis"
         />
-        <br />
+        <br /> <br />
         <button onClick={addProduct} className="btn btn-primary">
           Dodaj proizvod
         </button>
-        <br />
+        <br /> <br />
       </div>
     </div>
   );

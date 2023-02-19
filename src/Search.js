@@ -9,6 +9,18 @@ function SearchProduct() {
     setData(result);
   }
 
+  var products = [];
+  function sendToBasket(id) {
+    products.push(id);
+    console.warn(products);
+  }
+  window.products = products;
+  async function getData() {
+    let result = await fetch("http://localhost:8000/api/list");
+    result = await result.json();
+    setData(result);
+  }
+
   return (
     <div>
       <div className="col-sm-6-offset-sm-3">
@@ -32,6 +44,7 @@ function SearchProduct() {
               <th scope="col">Cena</th>
               <th scope="col">Opis</th>
               <th scope="col">Slika</th>
+              <th scope="col">Opcije</th>
             </tr>
           </thead>
           {data.map((item) => (
@@ -45,6 +58,15 @@ function SearchProduct() {
                   style={{ width: 150 }}
                   src={"http://localhost:8000/" + item.file_path}
                 />
+              </td>
+              <td>
+                <button
+                  onClick={() => sendToBasket(item.id)}
+                  type="button"
+                  class="btn btn-info"
+                >
+                  Dodaj u korpu
+                </button>
               </td>
             </tr>
           ))}
