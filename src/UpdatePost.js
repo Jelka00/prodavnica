@@ -1,12 +1,12 @@
 import { withRouter, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-function UpdateProduct() {
+function UpdatePost() {
   const [data, setData] = useState([]);
   const id = useParams();
   useEffect(() => {
     const sendData = async () => {
-      let result = await fetch("http://localhost:8000/api/product/" + id.id);
+      let result = await fetch("http://localhost:8000/api/post/" + id.id);
 
       result = await result.json();
       setData(result);
@@ -14,19 +14,17 @@ function UpdateProduct() {
     sendData();
   });
 
-  async function updateProduct() {
-    const name = document.getElementById("name").value;
-    const price = document.getElementById("price").value;
-    const description = document.getElementById("description").value;
+  async function updatePost() {
+    const title = document.getElementById("title").value;
+    const content = document.getElementById("content").value;
     const file_path = document.getElementById("file_path").value;
 
     const updateData = {
-      name: name,
-      price: price,
-      description: description,
+      title: title,
+      content: content,
       file_path: file_path,
     };
-    let result = await fetch("http://localhost:8000/api/update/" + id.id, {
+    let result = await fetch("http://localhost:8000/api/updatePost/" + id.id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -36,19 +34,14 @@ function UpdateProduct() {
     if (!result) {
       throw new Error("Neuspesno azuriranje!");
     }
-    alert("Proizvod uspesno azuriran");
+    alert("Objava uspesno azurirana");
   }
   return (
     <div>
-      <h1>UpdateProduct</h1>
-      <input type="text" defaultValue={data.name} id="name" /> <br /> <br />
-      <input type="text" defaultValue={data.price} id="price" /> <br /> <br />
-      <input
-        type="text"
-        defaultValue={data.description}
-        id="description"
-      />{" "}
-      <br /> <br />
+      <h1>Azuriraj objavu</h1>
+      <input type="text" defaultValue={data.title} id="title" /> <br /> <br />
+      <input type="text" defaultValue={data.content} id="content" /> <br />{" "}
+      <br />
       <input
         type="file"
         defaultValue={data.file_path}
@@ -59,11 +52,11 @@ function UpdateProduct() {
         src={"http://localhost:8000/" + data.file_path}
       />{" "}
       <br /> <br />
-      <button onClick={updateProduct} type="button" class="btn btn-warning">
+      <button onClick={updatePost} type="button" class="btn btn-warning">
         Azuriraj
       </button>
     </div>
   );
 }
 
-export default UpdateProduct;
+export default UpdatePost;

@@ -14,6 +14,9 @@ import Basket from "./Basket";
 import Footer from "./components/Footer";
 import News from "./components/News";
 import AddPost from "./AddPost";
+import PostList from "./PostList";
+import UpdatePost from "./UpdatePost";
+import PostListAdmin from "./PostListAdmin";
 function App() {
   return (
     <div className="App">
@@ -51,6 +54,21 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/addPost" element={<AddPost></AddPost>}></Route>
+        </Routes>
+        <Routes>
+          <Route
+            path="/listPostAdmin"
+            element={<PostListAdmin></PostListAdmin>}
+          ></Route>
+        </Routes>
+        <Routes>
+          <Route
+            path="/listPostAdmin/updatePost/:id"
+            element={<UpdatePost></UpdatePost>}
+          ></Route>
+        </Routes>
+        <Routes>
+          <Route path="/listPost" element={<PostList></PostList>}></Route>
         </Routes>
         <Footer></Footer>
       </BrowserRouter>

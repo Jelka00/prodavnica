@@ -23,3 +23,7 @@ Route::put('updateUser/{id}', [UserController::class, 'addToBasket']);
 Route::get('user/{id}', [UserController::class, 'getUser']);
 //Rute za objavu
 Route::post('addPost', [PostController::class, 'addPost']);
+Route::get('listPost', [PostController::class, 'listPost']);
+Route::delete('deletePost/{id}', [PostController::class, 'delete']);
+Route::put('updatePost/{id}', [PostController::class, 'updatePost']);
+Route::get('post/{id}', [PostController::class, 'getPost']);

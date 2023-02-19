@@ -4,6 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 function AddPost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [file, setFile] = useState("");
   const navigate = useNavigate();
   async function addPost() {
     console.warn(title, content);
@@ -11,6 +12,7 @@ function AddPost() {
     //Append- dodaj na kraju
     formData.append("title", title);
     formData.append("content", content);
+    formData.append("file", file);
 
     let result = await fetch("http://localhost:8000/api/addPost", {
       method: "POST",
@@ -38,6 +40,14 @@ function AddPost() {
           className="form-control"
           onChange={(e) => setContent(e.target.value)}
           placeholder="Sadrzaj"
+        />{" "}
+        <br /> <br />
+        <input
+          id="input"
+          type="file"
+          className="form-control"
+          onChange={(e) => setFile(e.target.files[0])}
+          placeholder="fajl"
         />{" "}
         <br /> <br />
         <button onClick={addPost} className="btn btn-primary">

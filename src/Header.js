@@ -23,10 +23,12 @@ function Header() {
                     <Link to="/">Lista proizvoda</Link>
                     <Link to="/add">Dodaj proizvod</Link>
                     <Link to="/search">Pretrazi proizvod</Link>
+                    <Link to="/listPostAdmin">Lista objava</Link>
                     <Link to="/addPost">Dodaj objavu</Link>
                   </>
                 ) : (
                   <>
+                    <Link to="/listPost">Vesti</Link>
                     <Link to="/list">Lista proizvoda</Link>
                     <Link to="/search">Pretrazi proizvod</Link>
                     <Link to="/basket">Korpa</Link>
