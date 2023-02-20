@@ -32,6 +32,7 @@ function Header() {
                     <Link to="/list">Lista proizvoda</Link>
                     <Link to="/search">Pretrazi proizvod</Link>
                     <Link to="/basket">Korpa</Link>
+                    <Link to="/map">Kontakt</Link>
                   </>
                 )}
               </>

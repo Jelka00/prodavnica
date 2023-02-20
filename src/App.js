@@ -17,6 +17,7 @@ import AddPost from "./AddPost";
 import PostList from "./PostList";
 import UpdatePost from "./UpdatePost";
 import PostListAdmin from "./PostListAdmin";
+import Map from "./Map";
 function App() {
   return (
     <div className="App">
@@ -69,6 +70,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/listPost" element={<PostList></PostList>}></Route>
+        </Routes>
+        <Routes>
+          <Route path="/map" element={<Map></Map>}></Route>
         </Routes>
         <Footer></Footer>
       </BrowserRouter>
