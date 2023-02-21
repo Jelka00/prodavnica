@@ -18,6 +18,7 @@ import PostList from "./PostList";
 import UpdatePost from "./UpdatePost";
 import PostListAdmin from "./PostListAdmin";
 import Map from "./Map";
+import CurrencyConverter from "./CurrencyConverter";
 function App() {
   return (
     <div className="App">
@@ -73,6 +74,12 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/map" element={<Map></Map>}></Route>
+        </Routes>
+        <Routes>
+          <Route
+            path="/converter"
+            element={<CurrencyConverter></CurrencyConverter>}
+          ></Route>
         </Routes>
         <Footer></Footer>
       </BrowserRouter>

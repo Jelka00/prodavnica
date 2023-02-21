@@ -1,5 +1,6 @@
 import { withRouter, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import "./App.css";
 
 function UpdatePost() {
   const [data, setData] = useState([]);
@@ -39,19 +40,28 @@ function UpdatePost() {
   return (
     <div>
       <h1>Azuriraj objavu</h1>
-      <input type="text" defaultValue={data.title} id="title" /> <br /> <br />
-      <input type="text" defaultValue={data.content} id="content" /> <br />{" "}
-      <br />
+      <input
+        type="text"
+        defaultValue={data.title}
+        className="form-control"
+        id="input"
+      />{" "}
+      <br /> <br />
+      <input
+        type="text"
+        defaultValue={data.content}
+        className="form-control"
+        id="input"
+      />{" "}
+      <br /> <br />
       <input
         type="file"
         defaultValue={data.file_path}
-        id="file_path"
-      /> <br /> <br />
-      <img
-        style={{ width: 150 }}
-        src={"http://localhost:8000/" + data.file_path}
+        className="form-control"
+        id="input"
       />{" "}
       <br /> <br />
+      <img id="img" src={"http://localhost:8000/" + data.file_path} /> <br />
       <button onClick={updatePost} type="button" class="btn btn-warning">
         Azuriraj
       </button>

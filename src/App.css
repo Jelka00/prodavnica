@@ -19,10 +19,25 @@
   padding-left: 20px;
 }
 #input {
+  background-color: #b9caed;
   width: 400px;
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+#input2 {
+  border: 1px solid #333;
+  border-radius: .3em;
+  padding: .25rem;
+  width: 7em;
+
+}
+#equals{
+  font-weight: bold;
+  font-size: 2rem;
+}
+select{
+  margin-left: .5rem;
 }
 .App-header {
   background-color: #282c34;
@@ -62,4 +77,10 @@
   to {
     transform: rotate(360deg);
   }
+  
+}
+#img{
+  display: block;
+  margin: 0 auto;
+  width: 150;
 }

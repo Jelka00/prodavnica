@@ -16,7 +16,7 @@ function Map() {
           measure acres/hectares on map
         </a>
       </iframe>
-      <h1>Kontaktirajte nas!</h1>
+      <h1>Posetite nas!</h1>
     </div>
   );
 }

@@ -11,7 +11,7 @@ const Hero = () => {
         <div className="hidden md:flex p-5">
           <img
             className="w-[400px] h-[300px] border-8 border-gray-500"
-            src="images/slika2.jpg"
+            src="images/logo2.jpg"
             alt=""
           />
         </div>

@@ -1,5 +1,6 @@
 import { withRouter, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import "./index.css";
 
 function UpdateProduct() {
   const [data, setData] = useState([]);
@@ -40,25 +41,39 @@ function UpdateProduct() {
   }
   return (
     <div>
-      <h1>UpdateProduct</h1>
-      <input type="text" defaultValue={data.name} id="name" /> <br /> <br />
-      <input type="text" defaultValue={data.price} id="price" /> <br /> <br />
+      <h1>Azuriraj proizvod</h1>
+      <input
+        type="text"
+        defaultValue={data.name}
+        className="form-control"
+        id="input"
+      />{" "}
+      <br /> <br />
+      <input
+        type="text"
+        defaultValue={data.price}
+        className="form-control"
+        id="input"
+      />{" "}
+      <br /> <br />
       <input
         type="text"
         defaultValue={data.description}
-        id="description"
+        className="form-control"
+        id="input"
       />{" "}
       <br /> <br />
       <input
         type="file"
         defaultValue={data.file_path}
-        id="file_path"
-      /> <br /> <br />
-      <img
-        style={{ width: 150 }}
-        src={"http://localhost:8000/" + data.file_path}
+        className="form-control"
+        id="input"
       />{" "}
       <br /> <br />
+      <img
+        id="img"
+        src={"http://localhost:8000/" + data.file_path}
+      /> <br /> <br />
       <button onClick={updateProduct} type="button" class="btn btn-warning">
         Azuriraj
       </button>
